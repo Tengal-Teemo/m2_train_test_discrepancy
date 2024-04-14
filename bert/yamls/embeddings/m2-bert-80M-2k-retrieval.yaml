@@ -5,7 +5,7 @@ precision: bf16
 max_seq_len: 2048 
 evaluation_max_seq_len: 2048
 
-use_flash_fft: True
+use_flash_fft: False
 
 ##########################################################
 
