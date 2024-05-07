@@ -165,9 +165,14 @@ def calculate_ndcg_10(corpus, qrels, queries, model):
     qkeys = ['Query_' + str(index) for index in indexes]
     ckeys = ['Passage_' + str(index) for index in indexes]
 
-    sub_corpus = dict(zip(ckeys, [list(corpus.values())[i] for i in indexes]))
-    sub_qrels = dict(zip(qkeys, [list(qrels.values())[i] for i in indexes]))
-    sub_queries = dict(zip(qkeys, [list(queries.values())[i] for i in indexes]))
+    # sub_corpus = dict(zip(ckeys, [list(corpus.values())[i] for i in indexes]))
+    # sub_qrels = dict(zip(qkeys, [list(qrels.values())[i] for i in indexes]))
+    # sub_queries = dict(zip(qkeys, [list(queries.values())[i] for i in indexes]))
+
+    sub_corpus = dict(zip(ckeys, [corpus[key] for key in ckeys]))
+    sub_qrels = dict(zip(qkeys, [qrels[key] for key in qkeys]))
+    sub_queries = dict(zip(qkeys, [queries[key] for key in qkeys]))
+
 
     if use_BM25:
         from beir.retrieval.search.lexical import BM25Search as BM25
